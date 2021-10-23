@@ -1,0 +1,40 @@
+.form {
+  box-sizing: border-box;
+  border: 5px ridge #c9dfcb;
+  width: 400px;
+  padding: 20px;
+}
+
+.name {
+  margin-left: 30px;
+  margin-bottom: 10px;
+  width: 265px;
+}
+
+.number {
+  margin-left: 14px;
+  width: 265px;
+}
+
+.btn {
+  display: block;
+  width: 90px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px 10px 3px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+  background-color: #ffffff;
+}
+
+.btn:hover {
+  cursor: pointer;
+
+  background-color: #c7f5be;
+}
+
+.btn:active {
+  background-color: #0ab38e;
+  color: #ffffff;
+}

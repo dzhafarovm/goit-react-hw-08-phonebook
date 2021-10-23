@@ -1,0 +1,8 @@
+.phonebookBox {
+  width: 400px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #d6f5e5;
+  border: 15px ridge #b6d4f0;
+}
