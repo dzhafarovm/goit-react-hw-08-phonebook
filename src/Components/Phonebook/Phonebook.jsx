@@ -8,7 +8,7 @@ import { LoaderSpinner } from 'Components/Spinner/spinner';
 import { useFetchContactsQuery } from 'redux/Phonebook/ContactSlice.jsx';
 import css from './phonebook-css/Phonebook.module.css';
 
-export const Phonebook = () => {
+export default function Phonebook() {
   const { data, isFetching } = useFetchContactsQuery();
   const [filter, setFilter] = useState('');
 
@@ -38,4 +38,4 @@ export const Phonebook = () => {
       <Toaster position="top-right" />
     </div>
   );
-};
+}

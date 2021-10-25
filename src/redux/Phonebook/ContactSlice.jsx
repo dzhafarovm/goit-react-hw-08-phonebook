@@ -4,12 +4,30 @@ export const contactApi = createApi({
   reducerPath: 'contactsApi',
 
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://616883b909e030001712bfff.mockapi.io/api/vi/',
+    baseUrl: 'https://connections-api.herokuapp.com',
   }),
 
   tagTypes: ['Contact'],
 
   endpoints: builder => ({
+    registerUser: builder.mutation({
+      query: user => ({
+        url: '/users/signup/',
+        method: 'POST',
+        body: user,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+
+    loginUser: builder.mutation({
+      query: user => ({
+        url: '/users/login/',
+        method: 'POST',
+        body: user,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+
     fetchContacts: builder.query({
       query: () => `/contacts`,
       providesTags: ['Contact'],
@@ -38,4 +56,6 @@ export const {
   useFetchContactsQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
+  useRegisterUserMutation,
+  useLoginUserMutation,
 } = contactApi;
