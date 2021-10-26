@@ -1,19 +1,23 @@
 import { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import shortid from 'shortid';
 
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 import { LoaderSpinnerDots } from 'Components/Spinner/spinner';
-import { useCreateContactMutation } from 'redux/Phonebook/ContactSlice.jsx';
+
 import css from './phonebook-css/ContactForm.module.css';
 
-export default function ContactForm({ contacts }) {
-  const [createContact, { isLoading }] = useCreateContactMutation();
+export default function ContactForm() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelectors.getAllContacts);
+  const loading = useSelector(contactsSelectors.getLoading);
 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const nameId = useRef(shortid.generate());
-  const phoneId = useRef(shortid.generate());
+  const numberId = useRef(shortid.generate());
 
   const handleContactChange = e => {
     switch (e.target.name) {
@@ -21,8 +25,8 @@ export default function ContactForm({ contacts }) {
         setName(e.target.value);
         break;
 
-      case 'phone':
-        setPhone(e.target.value);
+      case 'number':
+        setNumber(e.target.value);
         break;
 
       default:
@@ -47,16 +51,16 @@ export default function ContactForm({ contacts }) {
       return;
     }
 
-    if (contacts.find(con => con.phone === phone)) {
-      toast(`Number '${phone}' is alresdy in contacts`, toastStyle);
+    if (contacts.find(con => con.number === number)) {
+      toast(`Number '${number}' is alresdy in contacts`, toastStyle);
       return;
     }
 
-    createContact({ name, phone });
+    dispatch(contactsOperations.addContact({ name, number }));
     toast.success(`Contact '${name}' is added`);
 
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -80,15 +84,15 @@ export default function ContactForm({ contacts }) {
 
         <br />
 
-        <label htmlFor={phoneId.current} className={css.label}>
+        <label htmlFor={numberId.current} className={css.label}>
           Number:
           <input
             className={css.number}
             type="tel"
-            name="phone"
+            name="number"
             placeholder="Enter number"
-            value={phone}
-            id={phoneId.current}
+            value={number}
+            id={numberId.current}
             onChange={handleContactChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
@@ -98,8 +102,8 @@ export default function ContactForm({ contacts }) {
 
         <br />
 
-        <button type="submit" className={css.btn} disabled={isLoading}>
-          {isLoading ? <LoaderSpinnerDots /> : 'add contact'}
+        <button type="submit" className={css.btn} disabled={loading}>
+          {loading ? <LoaderSpinnerDots /> : 'add contact'}
         </button>
       </form>
     </div>

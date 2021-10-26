@@ -10,24 +10,6 @@ export const contactApi = createApi({
   tagTypes: ['Contact'],
 
   endpoints: builder => ({
-    registerUser: builder.mutation({
-      query: user => ({
-        url: '/users/signup/',
-        method: 'POST',
-        body: user,
-      }),
-      invalidatesTags: ['Contact'],
-    }),
-
-    loginUser: builder.mutation({
-      query: user => ({
-        url: '/users/login/',
-        method: 'POST',
-        body: user,
-      }),
-      invalidatesTags: ['Contact'],
-    }),
-
     fetchContacts: builder.query({
       query: () => `/contacts`,
       providesTags: ['Contact'],

@@ -1,6 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { contactsSelectors, changeFilter } from '../../redux/contacts';
+
 import css from './phonebook-css/Filter.module.css';
 
-export default function Filter({ value, onChange }) {
+export default function Filter() {
+  const dispatch = useDispatch();
+  const value = useSelector(contactsSelectors.getFilter);
+
   return (
     <label>
       Find contacts by name
@@ -9,7 +16,7 @@ export default function Filter({ value, onChange }) {
         type="text"
         placeholder="Enter contact's name"
         value={value}
-        onChange={onChange}
+        onChange={e => dispatch(changeFilter(e.target.value))}
       />
     </label>
   );

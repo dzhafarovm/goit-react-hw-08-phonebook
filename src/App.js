@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './Components/AppBar/AppBar.jsx';
 import { LoaderSpinner } from 'Components/Spinner/spinner.jsx';
-import React from 'react';
+import { authOperations } from 'redux/auth/';
 
 const HomeView = lazy(() =>
   import('Components/Views/HomeView.jsx' /* webpackChunkName: "HomeView" */),
@@ -29,6 +31,12 @@ const NotFoundView = lazy(() =>
 );
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <AppBar />
@@ -39,16 +47,16 @@ export const App = () => {
             <HomeView />
           </Route>
 
+          <Route path="/contacts" exact>
+            <Phonebook />
+          </Route>
+
           <Route path="/register" exact>
             <RegisterView />
           </Route>
 
           <Route path="/login" exact>
             <LoginView />
-          </Route>
-
-          <Route path="/contacts" exact>
-            <Phonebook />
           </Route>
 
           <Route>
