@@ -7,8 +7,11 @@
 }
 
 .item {
-  margin-bottom: 10px;
   display: flex;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00a6ff;
 }
 
 .btn {
@@ -16,16 +19,20 @@
   font-size: 12px;
   margin-left: auto;
   padding: 2px 10px 3px 10px;
-  border-radius: 8px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 500;
+  border: transparent;
   background-color: #ffffff;
+  color: #ff6347;
 }
 
 .btn:hover {
   cursor: pointer;
-  background-color: #ffc2c2;
+  color: #00a6ff;
 }
 
 .btn:active {
-  background-color: #f81010;
+  background-color: #00a6ff;
   color: #ffffff;
 }

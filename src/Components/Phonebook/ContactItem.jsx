@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
-import { LoaderSpinnerDots } from 'Components/Spinner/spinner';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 import css from './phonebook-css/ContactList.module.css';
@@ -26,7 +25,7 @@ export default function ContactListItem({ id, name, number }) {
         }}
         disabled={loading}
       >
-        {loading ? <LoaderSpinnerDots /> : 'delete'}
+        delete
       </button>
     </li>
   );

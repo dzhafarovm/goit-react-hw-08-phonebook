@@ -1,18 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operation';
-// import { LoaderSpinnerDots } from 'Components/Spinner/spinner';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import css from './pages-css/RegisterView.module.css';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -44,40 +33,51 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <div className={css.container}>
+      <h2 className={css.title}>User registration</h2>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
+      <form onSubmit={handleSubmit} className={css.form} autoComplete="off">
+        <label className={css.label}>
+          Name:
+          <input
+            className={css.input}
+            type="text"
+            name="name"
+            required
+            value={name}
+            onChange={handleChange}
+          />
         </label>
 
-        <label style={styles.label}>
-          Почта
+        <label className={css.label}>
+          E-mail:
           <input
+            className={css.input}
             type="email"
             name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             value={email}
             onChange={handleChange}
           />
         </label>
 
-        <label style={styles.label}>
-          Пароль
+        <label className={css.label}>
+          Password:
           <input
+            className={css.input}
             type="password"
             name="password"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$"
+            required
             value={password}
             onChange={handleChange}
           />
         </label>
 
-        {/* <button type="submit" disabled={isLoading}>
-          {isLoading ? <LoaderSpinnerDots /> : 'Зарегистрироваться'}
-        </button> */}
-
-        <button type="submit">Зарегистрироваться</button>
+        <button class={css.button} type="submit">
+          Registration
+        </button>
       </form>
     </div>
   );

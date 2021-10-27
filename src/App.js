@@ -1,13 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import AppBar from './Components/AppBar/AppBar.jsx';
 import { LoaderSpinner } from 'Components/Spinner/spinner.jsx';
-import { authOperations } from 'redux/auth/';
+import PrivateRoute from 'Components/PrivateRoute';
+import PublicRoute from 'Components/PublicRoute';
+import { authOperations, authSelectors } from 'redux/auth/';
 
 const HomeView = lazy(() =>
   import('Components/Views/HomeView.jsx' /* webpackChunkName: "HomeView" */),
+);
+
+const Phonebook = lazy(() =>
+  import('Components/Phonebook/Phonebook' /* webpackChunkName: "Phonebook" */),
+);
+
+const LoginView = lazy(() =>
+  import('Components/Views/LoginView.jsx' /* webpackChunkName: "LoginView" */),
 );
 
 const RegisterView = lazy(() =>
@@ -16,54 +26,52 @@ const RegisterView = lazy(() =>
   ),
 );
 
-const LoginView = lazy(() =>
-  import('Components/Views/LoginView.jsx' /* webpackChunkName: "LoginView" */),
-);
-
-const Phonebook = lazy(() =>
-  import('Components/Phonebook/Phonebook' /* webpackChunkName: "Phonebook" */),
-);
-
 const NotFoundView = lazy(() =>
   import(
-    './Components/Views/NotFoundView.jsx' /* webpackChunkName: "NotFoundView" */
+    'Components/Views/NotFoundView.jsx' /* webpackChunkName: "NotFoundView" */
   ),
 );
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser,
+  );
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
+  console.log('App > isFetchingCurrentUser', isFetchingCurrentUser);
   return (
-    <>
-      <AppBar />
+    !isFetchingCurrentUser && (
+      <>
+        <AppBar />
 
-      <Suspense fallback={<LoaderSpinner />}>
-        <Switch>
-          <Route path="/" exact>
-            <HomeView />
-          </Route>
+        <Suspense fallback={<LoaderSpinner />}>
+          <Switch>
+            <PublicRoute exact path="/">
+              <HomeView />
+            </PublicRoute>
 
-          <Route path="/contacts" exact>
-            <Phonebook />
-          </Route>
+            <PrivateRoute exact path="/contacts" redirectTo="/login">
+              <Phonebook />
+            </PrivateRoute>
 
-          <Route path="/register" exact>
-            <RegisterView />
-          </Route>
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
 
-          <Route path="/login" exact>
-            <LoginView />
-          </Route>
+            <PublicRoute exact path="/login" restricted redirectTo="/contacts">
+              <LoginView />
+            </PublicRoute>
 
-          <Route>
-            <NotFoundView />
-          </Route>
-        </Switch>
-      </Suspense>
-    </>
+            <PublicRoute>
+              <NotFoundView />
+            </PublicRoute>
+          </Switch>
+        </Suspense>
+      </>
+    )
   );
 };

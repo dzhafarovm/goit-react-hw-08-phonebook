@@ -1,8 +1,23 @@
-.phonebookBox {
+.container {
   width: 400px;
-  padding: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #d6f5e5;
-  border: 15px ridge #b6d4f0;
+}
+
+.title {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ff6347;
+}
+
+.contacts {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ff6347;
+}
+
+.filter {
+  color: #00a6ff;
+  text-align: center;
 }

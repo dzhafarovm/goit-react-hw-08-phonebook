@@ -1,10 +1,11 @@
 import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BsFillPersonFill, BsFillTelephoneFill } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import shortid from 'shortid';
 
 import { contactsSelectors, contactsOperations } from '../../redux/contacts';
-import { LoaderSpinnerDots } from 'Components/Spinner/spinner';
+import { LoaderSpinner } from 'Components/Spinner/spinner';
 
 import css from './phonebook-css/ContactForm.module.css';
 
@@ -67,7 +68,7 @@ export default function ContactForm() {
     <div>
       <form onSubmit={handleSubmit} className={css.form}>
         <label htmlFor={nameId.current} className={css.label}>
-          Name:
+          <BsFillPersonFill size={16} className={css.icon} /> Name:
           <input
             className={css.name}
             type="text"
@@ -85,6 +86,7 @@ export default function ContactForm() {
         <br />
 
         <label htmlFor={numberId.current} className={css.label}>
+          <BsFillTelephoneFill size={16} className={css.icon} />
           Number:
           <input
             className={css.number}
@@ -103,7 +105,7 @@ export default function ContactForm() {
         <br />
 
         <button type="submit" className={css.btn} disabled={loading}>
-          {loading ? <LoaderSpinnerDots /> : 'add contact'}
+          {loading ? <LoaderSpinner /> : 'add contact'}
         </button>
       </form>
     </div>

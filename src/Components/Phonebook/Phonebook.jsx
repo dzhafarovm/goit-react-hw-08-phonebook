@@ -18,16 +18,16 @@ export default function Phonebook() {
   useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
   return (
-    <div className={css.phonebookBox}>
-      <h1>Phonebook</h1>
+    <div className={css.container}>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
 
-      <h2>Contacts</h2>
+      <h2 className={css.contacts}>Contacts</h2>
 
       {contacts.length !== 0 ? (
         <Filter />
       ) : (
-        <h3>Your contacts list is empty</h3>
+        <h3 className={css.filter}>Your contacts list is empty</h3>
       )}
 
       {loading && <LoaderSpinner />}
