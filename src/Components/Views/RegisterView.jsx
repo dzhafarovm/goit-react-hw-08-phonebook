@@ -56,7 +56,7 @@ export default function RegisterView() {
             type="email"
             name="email"
             required
-            // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             value={email}
             onChange={handleChange}
           />
@@ -68,7 +68,8 @@ export default function RegisterView() {
             className={css.input}
             type="password"
             name="password"
-            // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$"
+            pattern=".{5,}"
+            title="Password must be at least five characters long"
             required
             value={password}
             onChange={handleChange}

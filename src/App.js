@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+
 import AppBar from './Components/AppBar/AppBar.jsx';
-import { LoaderSpinner } from 'Components/Spinner/spinner.jsx';
 import PrivateRoute from 'Components/PrivateRoute';
 import PublicRoute from 'Components/PublicRoute';
+import { LoaderSpinner } from 'Components/Spinner/spinner.jsx';
 import { authOperations, authSelectors } from 'redux/auth/';
 
 const HomeView = lazy(() =>
@@ -70,6 +72,8 @@ export const App = () => {
             </PublicRoute>
           </Switch>
         </Suspense>
+
+        <Toaster position="top-center" />
       </>
     )
   );

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -16,10 +17,10 @@ const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
+
     return data;
   } catch (error) {
-    alert('This user is already registered');
-    // toast.error("This user is already registered");
+    toast.error('This user is already registered');
     console.log(error);
   }
 });

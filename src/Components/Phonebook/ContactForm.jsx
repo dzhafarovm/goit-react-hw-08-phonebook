@@ -38,22 +38,14 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const toastStyle = {
-      style: {
-        borderRadius: '10px',
-        background: '#e8f2f2',
-        color: '#000',
-      },
-    };
-
     if (contacts.find(con => con.name.toLowerCase() === name.toLowerCase())) {
-      toast(`Name '${name}' is alresdy in contacts`, toastStyle);
+      toast(`Name '${name}' is alresdy in contacts`);
 
       return;
     }
 
     if (contacts.find(con => con.number === number)) {
-      toast(`Number '${number}' is alresdy in contacts`, toastStyle);
+      toast(`Number '${number}' is alresdy in contacts`);
       return;
     }
 

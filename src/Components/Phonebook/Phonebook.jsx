@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
 
 import ContactForm from './ContactForm.jsx';
 import ContactList from './ContactList.jsx';
@@ -33,8 +32,6 @@ export default function Phonebook() {
       {loading && <LoaderSpinner />}
 
       <ContactList />
-
-      <Toaster position="top-right" />
     </div>
   );
 }
