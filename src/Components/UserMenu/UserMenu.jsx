@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { FiArrowRight } from 'react-icons/fi';
+import { BsArrowBarRight } from 'react-icons/bs';
 import { authSelectors, authOperations } from 'redux/auth';
 import css from './UserMenu.module.css';
 
@@ -16,7 +16,8 @@ export default function UserMenu() {
         type="button"
         onClick={() => dispatch(authOperations.logOut())}
       >
-        <span className={css.span}>Exit</span> <FiArrowRight />
+        <span className={css.span}>Exit</span>
+        <BsArrowBarRight size={18} />
       </button>
     </div>
   );
