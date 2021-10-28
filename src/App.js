@@ -42,7 +42,6 @@ export const App = () => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  console.log('App > isFetchingCurrentUser', isFetchingCurrentUser);
   return (
     !isFetchingCurrentUser && (
       <>

@@ -18,6 +18,8 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    alert('This user is already registered');
+    // toast.error("This user is already registered");
     console.log(error);
   }
 });

@@ -3,14 +3,10 @@
   align-items: center;
 }
 
-.user {
+.userName {
   font-weight: 700;
   margin-right: 12px;
-  color: #ffffff;
-}
-
-.userName {
-  color: #ff6347;
+  color: #d72708;
 }
 
 .button {

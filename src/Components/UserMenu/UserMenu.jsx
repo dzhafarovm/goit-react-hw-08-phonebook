@@ -9,9 +9,8 @@ export default function UserMenu() {
 
   return (
     <div className={css.container}>
-      <span className={css.user}>
-        Welcome, <span className={css.userName}>{name}</span>
-      </span>
+      <span className={css.userName}>{name}</span>
+
       <button
         className={css.button}
         type="button"
