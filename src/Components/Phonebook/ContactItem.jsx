@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
+import { BsFillPersonFill, BsFillTelephoneFill } from 'react-icons/bs';
 
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
@@ -13,8 +14,10 @@ export default function ContactListItem({ id, name, number }) {
 
   return (
     <li key={id} className={css.item}>
-      <div>
-        <span>{name}: </span>
+      <div className={css.contact}>
+        <BsFillPersonFill size={16} className={css.icon} />
+        <span className={css.name}>{name}: </span>
+        <BsFillTelephoneFill size={12} className={css.icon} />
         <span>{number}</span>
       </div>
       <button

@@ -78,7 +78,7 @@ export default function ContactForm() {
         <br />
 
         <label htmlFor={numberId.current} className={css.label}>
-          <BsFillTelephoneFill size={16} className={css.icon} />
+          <BsFillTelephoneFill size={12} className={css.icon} />
           Number:
           <input
             className={css.number}

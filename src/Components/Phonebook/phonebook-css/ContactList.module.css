@@ -36,3 +36,18 @@
   background-color: #00a6ff;
   color: #ffffff;
 }
+
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 5px;
+  width: 16px;
+  color: #ff6347;
+}
+
+.name {
+  margin-right: 5px;
+}

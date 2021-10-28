@@ -7,8 +7,8 @@
 
 .label {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   color: #ff6347;
   font-size: 16px;
   font-weight: 700;
@@ -16,17 +16,18 @@
 
 .name {
   margin-left: 30px;
-  margin-bottom: 10px;
-  width: 265px;
+  width: 240px;
 }
 
 .number {
   margin-left: 14px;
-  width: 265px;
+  width: 240px;
 }
 
 .icon {
-  margin-right: 5px;
+  margin-right: 10px;
+  width: 16px;
+  color: #00a6ff;
 }
 
 .btn {
