@@ -16,8 +16,8 @@ export default function ContactListItem({ id, name, number }) {
     <li key={id} className={css.item}>
       <div className={css.contact}>
         <BsFillPersonFill size={16} className={css.icon} />
-        <span className={css.name}>{name}: </span>
-        <BsFillTelephoneFill size={12} className={css.icon} />
+        <span className={css.name}>{name}</span>
+        <BsFillTelephoneFill size={11} className={css.icon} />
         <span>{number}</span>
       </div>
       <button
