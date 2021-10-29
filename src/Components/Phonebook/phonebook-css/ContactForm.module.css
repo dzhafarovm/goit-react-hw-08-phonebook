@@ -43,14 +43,17 @@
   border: transparent;
   background-color: #ffffff;
   color: #ff6347;
+
+  box-shadow: 5px 5px 10px #c9c9c9, inset -5px -5px 8px -4px #c9c9c9,
+    -5px -5px 10px #fdfdfd, inset 5px 5px 8px -4px #fdfdfd;
 }
 
 .btn:hover {
   cursor: pointer;
-  color: #00a6ff;
 }
 
 .btn:active {
-  background-color: #ff6347;
-  color: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, inset -5px -5px 8px -4px #c9c9c9,
+    inset -6px -6px 8px 0 #fdfdfd, -5px -5px 10px #fdfdfd,
+    inset 5px 5px 8px -4px #fdfdfd, inset 6px 6px 8px 0 #c9c9c9;
 }
