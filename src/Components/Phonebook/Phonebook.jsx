@@ -29,9 +29,9 @@ export default function Phonebook() {
         <h3 className={css.filter}>Your contacts list is empty</h3>
       )}
 
-      {loading && <LoaderSpinner />}
-
       <ContactList />
+
+      {loading && <LoaderSpinner />}
     </div>
   );
 }

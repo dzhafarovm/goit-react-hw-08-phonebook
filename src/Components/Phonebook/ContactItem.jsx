@@ -8,7 +8,7 @@ import css from './phonebook-css/ContactList.module.css';
 
 export default function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();
-  const loading = useSelector(contactsSelectors.getLoading);
+  const loading = useSelector(contactsSelectors.getDeletedContact);
 
   const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 

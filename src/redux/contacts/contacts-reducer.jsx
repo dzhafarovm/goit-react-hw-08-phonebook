@@ -24,9 +24,15 @@ const loading = createReducer(false, {
   [fetchContactsRequest]: () => true,
   [fetchContactsSuccess]: () => false,
   [fetchContactsError]: () => false,
+});
+
+const isAddedContact = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
+});
+
+const isDeletedContact = createReducer(false, {
   [deleteContactRequest]: () => true,
   [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
@@ -41,6 +47,8 @@ const error = createReducer(null, {});
 export default combineReducers({
   items,
   filter,
-  loading,
   error,
+  loading,
+  isAddedContact,
+  isDeletedContact,
 });

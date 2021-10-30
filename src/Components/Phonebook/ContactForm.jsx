@@ -12,7 +12,7 @@ import css from './phonebook-css/ContactForm.module.css';
 export default function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelectors.getAllContacts);
-  const loading = useSelector(contactsSelectors.getLoading);
+  const loading = useSelector(contactsSelectors.getIsAddedContact);
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -97,6 +97,7 @@ export default function ContactForm() {
         <br />
 
         <button type="submit" className={css.btn} disabled={loading}>
+          {/* add contact */}
           {loading ? <LoaderSpinner /> : 'add contact'}
         </button>
       </form>
